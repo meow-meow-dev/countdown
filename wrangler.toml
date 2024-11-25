@@ -10,6 +10,7 @@ WEBSITE_URL = "http://localhost:5173"
 
 [env.production.vars]
 AWS_REGION = "eu-west-3"
+SEND_INVITATION_FROM = "countdown@meow-meow.dev"
 WEBSITE_NAME = "Tickr"
 WEBSITE_URL = "countdown.meow-meow.dev"
 
