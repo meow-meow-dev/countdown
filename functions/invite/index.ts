@@ -21,7 +21,6 @@ export function onRequestPost({ env, request }: EventContext<Env, string, never>
     env,
     request,
     schema: inviteBodySchema,
-    rateLimiter: { limit: 10, token: "send_invitation" },
   })
 }
 

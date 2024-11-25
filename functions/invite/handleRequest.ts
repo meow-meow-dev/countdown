@@ -5,18 +5,15 @@ import { getCorsHeaders } from "./corsHeaders"
 
 type HandleRequestProps<TCallbackOutput, TInput, TOutput, TIssue extends BaseIssue<unknown>, TSchema extends BaseSchema<TInput, TOutput, TIssue>> = {
   env: Env
-  rateLimiter: {
-    limit: number
-    token: string
-  }
+  rateLimiterToken?: string
   request: Request
   schema: TSchema
   callback: (params: InferOutput<TSchema>, env: Env) => Promise<TCallbackOutput>
 }
 
-export async function handleRequest<TCallbackOutput, TInput, TOutput, TIssue extends BaseIssue<unknown>, TSchema extends BaseSchema<TInput, TOutput, TIssue>>({ callback, env, rateLimiter: { limit, token }, request, schema }: HandleRequestProps<TCallbackOutput, TInput, TOutput, TIssue, TSchema>): Promise<Response> {
+export async function handleRequest<TCallbackOutput, TInput, TOutput, TIssue extends BaseIssue<unknown>, TSchema extends BaseSchema<TInput, TOutput, TIssue>>({ callback, env, rateLimiterToken, request, schema }: HandleRequestProps<TCallbackOutput, TInput, TOutput, TIssue, TSchema>): Promise<Response> {
   const { pathname } = new URL(request.url)
-  const { success } = await env.MY_RATE_LIMITER.limit({ key: pathname })
+  const { success } = await env.MY_RATE_LIMITER.limit({ key: rateLimiterToken ?? pathname })
   if (!success) {
     return new Response("Rate Limit Exceeded", { status: 429 })
   }
