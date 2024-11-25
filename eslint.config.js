@@ -9,6 +9,8 @@ export default antfu({
   typescript: true,
 
   rules: {
+    "no-console": ["warn"],
+    "antfu/no-top-level-await": ["off"],
     "unused-imports/no-unused-vars": ["error", {
       argsIgnorePattern: "^_",
       varsIgnorePattern: "^_",

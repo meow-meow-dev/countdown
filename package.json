@@ -25,7 +25,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
-    "ejs": "^3.1.10",
     "lambda-rate-limiter": "^4.0.0",
     "lucide-react": "^0.460.0",
     "luxon": "^3.5.0",
@@ -39,6 +38,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "github:antfu/eslint-config",
+    "@cloudflare/workers-types": "^4.20241112.0",
     "@eslint/js": "^9.13.0",
     "@types/ejs": "^3.1.5",
     "@types/lambda-rate-limiter": "^3.0.2",
@@ -59,6 +59,7 @@
     "tailwindcss": "^3.4.15",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.11.0",
-    "vite": "^5.4.10"
+    "vite": "^5.4.10",
+    "wrangler": "^3.90.0"
   }
 }

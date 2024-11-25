@@ -8,5 +8,5 @@ type SendInvitationProps = FormData & {
 }
 
 export async function sendInvitation(props: SendInvitationProps): Promise<void> {
-  await fetch(`${import.meta.env.VITE_API_URL}/.netlify/functions/invite`, { body: JSON.stringify(props), method: "POST" })
+  await fetch(`${import.meta.env.VITE_API_URL}/invite`, { body: JSON.stringify(props), method: "POST" })
 }
