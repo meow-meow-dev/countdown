@@ -7,7 +7,7 @@ type TemplateParams = SendEmailProps & {
 function generateBody({ countdown, from, to, website }: TemplateParams): string {
   return `<html>
             <body>
-              <p>Bonjour ${to.name} %>,</p>
+              <p>Bonjour ${to.name},</p>
               <p>${from.name} a partagé avec vous le compte à rebours <a href="${countdown.url}">${countdown.label}</a></p>
               <p style="color: #acaba9">Envoyé depuis <a href="${website.url}">${website.name}</a></p>
             </body>
