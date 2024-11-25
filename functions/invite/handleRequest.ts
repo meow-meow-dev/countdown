@@ -1,13 +1,7 @@
 import type { Request } from "@cloudflare/workers-types"
 import type { Env } from "./Env"
-import limiteFactory from "lambda-rate-limiter"
 import { type BaseIssue, type BaseSchema, type InferOutput, safeParse } from "valibot"
 import { getCorsHeaders } from "./corsHeaders"
-
-const limiter = limiteFactory({
-  interval: 60000, // rate limit interval in ms, starts on first request
-  uniqueTokenPerInterval: 500, // excess causes earliest seen to drop, per instantiation
-})
 
 type HandleRequestProps<TCallbackOutput, TInput, TOutput, TIssue extends BaseIssue<unknown>, TSchema extends BaseSchema<TInput, TOutput, TIssue>> = {
   env: Env
@@ -21,11 +15,9 @@ type HandleRequestProps<TCallbackOutput, TInput, TOutput, TIssue extends BaseIss
 }
 
 export async function handleRequest<TCallbackOutput, TInput, TOutput, TIssue extends BaseIssue<unknown>, TSchema extends BaseSchema<TInput, TOutput, TIssue>>({ callback, env, rateLimiter: { limit, token }, request, schema }: HandleRequestProps<TCallbackOutput, TInput, TOutput, TIssue, TSchema>): Promise<Response> {
-  try {
-    await limiter
-      .check(limit, token) // define maximum of 10 requests per interval
-  }
-  catch (_) {
+  const { pathname } = new URL(request.url)
+  const { success } = await env.MY_RATE_LIMITER.limit({ key: pathname })
+  if (!success) {
     return new Response("Rate Limit Exceeded", { status: 429 })
   }
 

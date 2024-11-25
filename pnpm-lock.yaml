@@ -38,9 +38,6 @@ importers:
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
-      lambda-rate-limiter:
-        specifier: ^4.0.0
-        version: 4.0.0
       lucide-react:
         specifier: ^0.460.0
         version: 0.460.0(react@18.3.1)
@@ -78,9 +75,6 @@ importers:
       '@eslint/js':
         specifier: ^9.13.0
         version: 9.15.0
-      '@types/lambda-rate-limiter':
-        specifier: ^3.0.2
-        version: 3.0.2
       '@types/luxon':
         specifier: ^3.4.2
         version: 3.4.2
@@ -1228,9 +1222,6 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/lambda-rate-limiter@3.0.2':
-    resolution: {integrity: sha512-yONiJSOb2vfEBIvJl7U/oz80sTH2CzEJKKQFxdzELObBqT+NXJYFg1gjfH1ArZk54rwqZpI+luP0fHVNfAOQCw==}
-
   '@types/luxon@3.4.2':
     resolution: {integrity: sha512-TifLZlFudklWlMBfhubvgqTXRzLDI5pCbGa4P8a3wPyUQSW+1xQ5eDsreP9DWHX3tjq1ke96uYG/nwundroWcA==}
 
@@ -2131,10 +2122,6 @@ packages:
     resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
     engines: {node: '>= 8'}
 
-  lambda-rate-limiter@4.0.0:
-    resolution: {integrity: sha512-00DAk9lXabV05qVmgElAwmKlCRcWxvb57rkvkVHhczo4yBZdQSJueg8oAFaV1nwWY1orORbGvLBtH7lp2COYEw==}
-    engines: {node: '>= 16'}
-
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
@@ -2174,14 +2161,6 @@ packages:
   loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
-
-  lru-cache-ext@4.0.0:
-    resolution: {integrity: sha512-aPFOhTy2M6iE4A+5f4q1K7bnTzl2Zv56DSDSboJ0pKBwqgiKu5zvKuZtyMB1vkshMXY2sH5st0P/WaDQ28M7aQ==}
-    engines: {node: '>= 16'}
-
-  lru-cache@10.0.0:
-    resolution: {integrity: sha512-svTf/fzsKHffP42sujkO/Rjs37BCIsQVRCeNYIm9WN8rgT7ffoUnRtZCqU+6BqcSBdv8gwJeTz8knJpgACeQMw==}
-    engines: {node: 14 || >=16.14}
 
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
@@ -4554,8 +4533,6 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/lambda-rate-limiter@3.0.2': {}
-
   '@types/luxon@3.4.2': {}
 
   '@types/mdast@4.0.4':
@@ -5533,10 +5510,6 @@ snapshots:
 
   klona@2.0.6: {}
 
-  lambda-rate-limiter@4.0.0:
-    dependencies:
-      lru-cache-ext: 4.0.0
-
   levn@0.4.1:
     dependencies:
       prelude-ls: 1.2.1
@@ -5570,12 +5543,6 @@ snapshots:
   loose-envify@1.4.0:
     dependencies:
       js-tokens: 4.0.0
-
-  lru-cache-ext@4.0.0:
-    dependencies:
-      lru-cache: 10.0.0
-
-  lru-cache@10.0.0: {}
 
   lru-cache@10.4.3: {}
 
