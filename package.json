@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
+  "packageManager": "pnpm@9.14.2",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -63,7 +64,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "packageManager": "pnpm@9.14.2"
-
+  }
 }
