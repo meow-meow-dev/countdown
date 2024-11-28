@@ -9,6 +9,7 @@
     "build": "vite build --config vite.config.client.ts && vite build --config vite.config.server.ts",
     "preview": "wrangler pages dev",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prepare": "husky",
     "tscheck": "tsc -noEmit -p tsconfig.app.json",
     "wrangler:types": "wrangler types --experimental-include-runtime=./src/wrangler.d.ts && rm -f worker-configuration.d.ts"

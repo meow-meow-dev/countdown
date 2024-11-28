@@ -1,27 +1,26 @@
-import type { Env } from "./Env";
-import { SendEmailCommand, SESClient } from "@aws-sdk/client-ses";
+import type { Env } from "./Env"
+import { SendEmailCommand, SESClient } from "@aws-sdk/client-ses"
 
 type SendEmailProps = {
-  body: string;
-  from: string;
-  subject: string;
-  to: string;
-};
+  body: string
+  from: string
+  subject: string
+  to: string
+}
 
 export async function sendEmail(
   { body, from, subject, to }: SendEmailProps,
-  env: Env
+  env: Env,
 ): Promise<void> {
-  const { AWS_ACCESS_KEY_ID, AWS_REGION, AWS_SECRET_ACCESS_KEY } = env;
-
-  console.log({ AWS_ACCESS_KEY_ID, AWS_REGION, AWS_SECRET_ACCESS_KEY });
+  const { AWS_ACCESS_KEY_ID, AWS_REGION, AWS_SECRET_ACCESS_KEY } = env
 
   if (
-    AWS_ACCESS_KEY_ID === undefined ||
-    AWS_SECRET_ACCESS_KEY === undefined ||
-    AWS_REGION === undefined
-  )
-    return;
+    AWS_ACCESS_KEY_ID === undefined
+    || AWS_SECRET_ACCESS_KEY === undefined
+    || AWS_REGION === undefined
+  ) {
+    return
+  }
 
   const sendEmailParams = {
     Source: from,
@@ -38,7 +37,7 @@ export async function sendEmail(
         },
       },
     },
-  };
+  }
 
   const ses = new SESClient({
     region: AWS_REGION,
@@ -46,7 +45,7 @@ export async function sendEmail(
       accessKeyId: AWS_ACCESS_KEY_ID,
       secretAccessKey: AWS_SECRET_ACCESS_KEY,
     },
-  });
-  const command = new SendEmailCommand(sendEmailParams);
-  await ses.send(command);
+  })
+  const command = new SendEmailCommand(sendEmailParams)
+  await ses.send(command)
 }

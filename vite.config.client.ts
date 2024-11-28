@@ -1,5 +1,5 @@
-import { defineConfig } from "vite";
-import viteReact from "@vitejs/plugin-react";
+import viteReact from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
 
 export default defineConfig(async () => {
   return {
@@ -13,5 +13,5 @@ export default defineConfig(async () => {
         },
       },
     },
-  };
-});
+  }
+})
