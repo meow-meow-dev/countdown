@@ -1,32 +1,41 @@
-import type { InferOutput } from "valibot"
-import { Button, Group, TextInput } from "@mantine/core"
-import { useForm } from "@mantine/form"
-import { valibotResolver } from "mantine-form-valibot-resolver"
-import { email, minLength, pipe, strictObject, string } from "valibot"
+import type { InferOutput } from "valibot";
+import { Button, Group, TextInput } from "@mantine/core";
+import { useForm } from "@mantine/form";
+import { valibotResolver } from "mantine-form-valibot-resolver";
+import { email, minLength, pipe, strictObject, string } from "valibot";
 
 const schema = strictObject({
   from: strictObject({
     name: pipe(string(), minLength(1, "Le nom doit être rempli")),
   }),
-  to: strictObject({ email: pipe(string(), email("Cette adresse e-mail ne semble pas valide")), name: pipe(string(), minLength(1, "Le nom doit être rempli")) }),
-})
+  to: strictObject({
+    email: pipe(string(), email("Cette adresse e-mail ne semble pas valide")),
+    name: pipe(string(), minLength(1, "Le nom doit être rempli")),
+  }),
+});
 
-export type FormData = InferOutput<typeof schema>
+export type FormData = InferOutput<typeof schema>;
 
 type InviteFormProps = {
-  onCancel: () => void
-  onSubmit: (_: FormData) => void
-}
+  onCancel: () => void;
+  onSubmit: (_: FormData) => void;
+};
 
-export function InviteForm({ onCancel, onSubmit }: InviteFormProps): React.JSX.Element {
+export function InviteForm({
+  onCancel,
+  onSubmit,
+}: InviteFormProps): React.JSX.Element {
   const form = useForm({
     mode: "controlled",
     initialValues: { from: { name: "" }, to: { email: "", name: "" } },
     validate: valibotResolver(schema),
-  })
+  });
 
   return (
-    <form className="flex flex-col gap-10 w-120 border round p-5 m-5" onSubmit={form.onSubmit(onSubmit)}>
+    <form
+      className="flex flex-col gap-10 w-120 border round p-5 m-5"
+      onSubmit={form.onSubmit(onSubmit)}
+    >
       <TextInput
         autoFocus
         withAsterisk
@@ -50,12 +59,11 @@ export function InviteForm({ onCancel, onSubmit }: InviteFormProps): React.JSX.E
       />
 
       <Group justify="flex-end" mt="md">
-        <Button variant="light" onClick={onCancel} type="button">Annuler</Button>
-        <Button type="submit">
-          {" "}
-          Envoyer l'invitation
+        <Button variant="light" onClick={onCancel} type="button">
+          Annuler
         </Button>
+        <Button type="submit"> Envoyer l'invitation</Button>
       </Group>
     </form>
-  )
+  );
 }
