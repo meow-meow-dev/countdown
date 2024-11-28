@@ -1,9 +1,9 @@
-import type { InferOutput } from "valibot"
-import { Button, Group, TextInput } from "@mantine/core"
-import { useForm } from "@mantine/form"
-import { valibotResolver } from "mantine-form-valibot-resolver"
-import { email, minLength, pipe, strictObject, string } from "valibot"
-import { useAutoFocus } from "./useAutoFocus"
+import type { InferOutput } from "valibot";
+import { Button, Group, TextInput } from "@mantine/core";
+import { useForm } from "@mantine/form";
+import { valibotResolver } from "mantine-form-valibot-resolver";
+import { email, minLength, pipe, strictObject, string } from "valibot";
+import { useAutoFocus } from "./useAutoFocus";
 
 const schema = strictObject({
   from: strictObject({
@@ -13,14 +13,14 @@ const schema = strictObject({
     email: pipe(string(), email("Cette adresse e-mail ne semble pas valide")),
     name: pipe(string(), minLength(1, "Le nom doit être rempli")),
   }),
-})
+});
 
-export type FormData = InferOutput<typeof schema>
+export type FormData = InferOutput<typeof schema>;
 
 type InviteFormProps = {
-  onCancel: () => void
-  onSubmit: (_: FormData) => void
-}
+  onCancel: () => void;
+  onSubmit: (_: FormData) => void;
+};
 
 export function InviteForm({
   onCancel,
@@ -30,8 +30,8 @@ export function InviteForm({
     mode: "controlled",
     initialValues: { from: { name: "" }, to: { email: "", name: "" } },
     validate: valibotResolver(schema),
-  })
-  const ref = useAutoFocus<HTMLInputElement>()
+  });
+  const ref = useAutoFocus<HTMLInputElement>();
 
   return (
     <form
@@ -68,5 +68,5 @@ export function InviteForm({
         <Button type="submit"> Envoyer l'invitation</Button>
       </Group>
     </form>
-  )
+  );
 }

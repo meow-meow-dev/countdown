@@ -1,4 +1,4 @@
-import { type InferOutput, strictObject, string } from "valibot"
+import { type InferOutput, strictObject, string } from "valibot";
 
 export const envSchemaFields = {
   AWS_ACCESS_KEY_ID: string(),
@@ -7,8 +7,8 @@ export const envSchemaFields = {
   SEND_INVITATION_FROM: string(),
   WEBSITE_NAME: string(),
   WEBSITE_URL: string(),
-}
+};
 
-export const envSchema = strictObject(envSchemaFields)
+export const envSchema = strictObject(envSchemaFields);
 
-export type Env = InferOutput<typeof envSchema>
+export type Env = InferOutput<typeof envSchema>;
