@@ -15,6 +15,7 @@ export default defineConfig(async ({ mode }) => {
   }
 
   return {
+    cacheDir: ".vite/server",
     plugins: [
       build({
         entry: ["src/server/index.ts"],

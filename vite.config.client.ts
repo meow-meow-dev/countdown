@@ -3,6 +3,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig(async () => {
   return {
+    cacheDir: ".vite/client",
     plugins: [viteReact()],
     server: {
       proxy: {
