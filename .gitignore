@@ -27,4 +27,4 @@ dist-ssr
 .netlify
 
 .dev.vars
-
+.vite
