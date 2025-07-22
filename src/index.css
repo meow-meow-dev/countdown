@@ -1,11 +1,9 @@
-@layer tw_base, mantine, tw_components, tw_utilities;
+@layer theme, base, mantine, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
 
-/* import tailwind */
-@import 'tailwindcss/base' layer(tw_base);
-@import 'tailwindcss/components' layer(tw_components);
-@import 'tailwindcss/utilities' layer(tw_utilities);
+@import "@mantine/core/styles.layer.css";
+@import "@mantine/notifications/styles.layer.css";
 
-/* import mantine */
-@import '@mantine/core/styles.layer.css' layer(utilities);
-@import '@mantine/dates/styles.layer.css' layer(utilities);
-@import '@mantine/notifications/styles.layer.css' layer(utilities);
+@import "tailwind-preset-mantine/theme.css";

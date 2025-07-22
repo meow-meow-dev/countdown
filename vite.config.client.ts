@@ -1,10 +1,11 @@
+import tailwindcss from "@tailwindcss/vite";
 import viteReact from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 export default defineConfig(async () => {
   return {
     cacheDir: ".vite/client",
-    plugins: [viteReact()],
+    plugins: [tailwindcss(), viteReact()],
     server: {
       proxy: {
         "/api": {

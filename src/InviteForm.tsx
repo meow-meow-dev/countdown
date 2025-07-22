@@ -35,7 +35,7 @@ export function InviteForm({
 
   return (
     <form
-      className="flex flex-col gap-10 w-120 border round p-5 m-5"
+      className="flex flex-col gap-10 w-120 border border-blue-600 round p-5 m-y"
       onSubmit={form.onSubmit(onSubmit)}
     >
       <TextInput
