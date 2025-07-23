@@ -118,6 +118,7 @@ function App() {
         opened={opened}
         onClose={close}
         title="Partager le compte à rebours"
+        size="auto"
       >
         <InviteForm onCancel={close} onSubmit={onSendInvitation} />
       </Modal>

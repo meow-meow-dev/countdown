@@ -1,16 +1,15 @@
+import type { JSX } from "react";
 import { Flex, Group, Stack, Text, Title } from "@mantine/core";
 import { DateTime } from "luxon";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 type DurationUnitProps = {
   unitLabels: [string, string];
   value: number;
 };
 
-function DurationUnit({
-  unitLabels,
-  value,
-}: DurationUnitProps): React.JSX.Element {
+function DurationUnit({ unitLabels, value }: DurationUnitProps): JSX.Element {
   const labelIndex = value <= 1 ? 0 : 1;
 
   return (
@@ -31,7 +30,7 @@ export function Countdown({
   className,
   label,
   to,
-}: CountdownProps): React.JSX.Element {
+}: CountdownProps): JSX.Element {
   const [now, setNow] = useState(DateTime.now());
   useEffect(() => {
     const id = setInterval(() => setNow(DateTime.now()), 1000);
@@ -46,7 +45,7 @@ export function Countdown({
   const seconds = Math.floor(delta.as("seconds")) % 60;
 
   return (
-    <Stack className={className} align="center">
+    <Stack className={twMerge(className, "text-blue-900")} align="center">
       <Title order={1} className="text-[5rem] text-center leading-none">
         {label}
       </Title>

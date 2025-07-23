@@ -3,7 +3,6 @@ import { Button, Group, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { valibotResolver } from "mantine-form-valibot-resolver";
 import { email, minLength, pipe, strictObject, string } from "valibot";
-import { useAutoFocus } from "./useAutoFocus";
 
 const schema = strictObject({
   from: strictObject({
@@ -31,19 +30,18 @@ export function InviteForm({
     initialValues: { from: { name: "" }, to: { email: "", name: "" } },
     validate: valibotResolver(schema),
   });
-  const ref = useAutoFocus<HTMLInputElement>();
 
   return (
     <form
-      className="flex flex-col gap-10 w-120 border round p-5 m-5"
+      className="flex flex-col gap-10 w-120 border border-blue-600 round p-5 m-y"
       onSubmit={form.onSubmit(onSubmit)}
     >
       <TextInput
         autoFocus
+        data-autofocus
         withAsterisk
         label="Votre nom :"
         key={form.key("from.name")}
-        ref={ref}
         {...form.getInputProps("from.name")}
       />
 

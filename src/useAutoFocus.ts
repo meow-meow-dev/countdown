@@ -3,7 +3,7 @@ import { type RefObject, useRef } from "react";
 
 export function useAutoFocus<
   ELEMENT extends HTMLInputElement,
->(): RefObject<ELEMENT> {
+>(): RefObject<ELEMENT | null> {
   const ref = useRef<ELEMENT>(null);
   useTimeout(
     () => {
