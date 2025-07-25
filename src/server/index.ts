@@ -1,7 +1,7 @@
 import { i18n } from "@lingui/core";
 import { sValidator } from "@meow-meow-dev/server-utilities/validation";
-import { cors } from "hono/cors";
-import { csrf } from "hono/csrf";
+// import { cors } from "hono/cors";
+// import { csrf } from "hono/csrf";
 import { languageDetector } from "hono/language";
 import { email, minLength, pipe, strictObject, string, url } from "valibot";
 
@@ -31,6 +31,12 @@ const inviteRoute = buildHono().post(
   "/",
   sValidator("json", inviteBodySchema),
   async (c) => {
+    try {
+      return c.text(JSON.stringify(buildConfiguration(c), null, 2));
+    } catch (error) {
+      return c.text(JSON.stringify(error, null, 2));
+    }
+
     await sendInvitation(
       { ...c.req.valid("json"), locale: c.var.language },
       buildConfiguration(c)
@@ -51,6 +57,7 @@ const app = buildHono()
       supportedLanguages: ["en", "fr"],
     })
   )
+  /*
   .use("*", (c, next) => {
     const { websiteUrl } = buildConfiguration(c);
 
@@ -66,6 +73,7 @@ const app = buildHono()
       origin: websiteUrl,
     })(c, next);
   })
+    */
   // useful when debugging
   // // .use(logger())
   // Required to prevent a crash in development mode
