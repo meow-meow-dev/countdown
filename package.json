@@ -23,10 +23,10 @@
     "tsc:check": "pnpm tsc -noEmit --project tsconfig.app.json",
     "unit_tests": "pnpm vitest:client:run && pnpm vitest:server:run",
     "vite:build": "pnpm vite build --config vite.config.client.ts && pnpm vite build --config vite.config.server.ts",
-    "vitest:client:run": "pnpm vitest run --config=vite.config.client.ts --mode development",
-    "vitest:client:watch": "pnpm vitest watch --config=vite.config.client.ts --mode development",
-    "vitest:server:run": "pnpm vitest run --config=vitest.config.server.ts --mode development",
-    "vitest:server:watch": "pnpm vitest watch --config=vitest.config.server.ts --mode development",
+    "vitest:client:run": "pnpm vitest run --config=vite.config.client.ts --mode development --passWithNoTests",
+    "vitest:client:watch": "pnpm vitest watch --config=vite.config.client.ts --mode development --passWithNoTests",
+    "vitest:server:run": "pnpm vitest run --config=vitest.config.server.ts --mode development --passWithNoTests",
+    "vitest:server:watch": "pnpm vitest watch --config=vitest.config.server.ts --mode development --passWithNoTests",
     "wrangler:generate_types": "pnpm wrangler types && mkdir -p ./src/server/_generated/wrangler && mv worker-configuration.d.ts ./src/server/_generated/wrangler"
   },
   "config": {
