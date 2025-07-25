@@ -4,5 +4,8 @@ pnpm-lock.yaml
 src/client/locales/*/messages.ts
 src/server/locales/*/messages.ts
 
+.release-please-manifest.json
+CHANGELOG.md
+
 # Ignoring as it adds trailing commas
 wrangler.jsonc
