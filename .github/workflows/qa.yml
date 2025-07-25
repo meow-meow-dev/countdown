@@ -32,14 +32,25 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@main
         with:
-          node-version: 20
+          node-version: 21
           cache: pnpm
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run lint
-        run: pnpm lint
+      - name: Generate code
+        run: pnpm generate_code
 
-      - name: run type checks
-        run: pnpm tscheck
+      - name: Run TypeScript type checks
+        run: pnpm tsc:check
+
+      - name: Run unit tests
+        run: pnpm unit_tests
+        env:
+          COUNTDOWN_DEVELOPMENT_AWS_SECRET_ACCESS_KEY: "xxx"
+
+      - name: Run lint
+        run: pnpm lint:check
+
+      - name: Run prettier
+        run: pnpm prettier:check

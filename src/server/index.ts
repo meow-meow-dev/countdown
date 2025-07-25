@@ -1,9 +1,20 @@
-import { vValidator } from "@hono/valibot-validator";
+import { i18n } from "@lingui/core";
+import { sValidator } from "@meow-meow-dev/server-utilities/validation";
 import { cors } from "hono/cors";
-import { logger } from "hono/logger";
+import { csrf } from "hono/csrf";
+import { languageDetector } from "hono/language";
 import { email, minLength, pipe, strictObject, string, url } from "valibot";
-import { factory } from "./factory";
-import { sendInvitation } from "./sendInvitation";
+
+import { buildHono } from "./buildHono.js";
+import { buildConfiguration } from "./Configuration.js";
+import { messages as en } from "./locales/en/messages.js";
+import { messages as fr } from "./locales/fr/messages.js";
+import { sendInvitation } from "./sendInvitation.js";
+
+i18n.load({
+  en,
+  fr,
+});
 
 const inviteBodySchema = strictObject({
   countdown: strictObject({ label: string(), url: pipe(string(), url()) }),
@@ -16,21 +27,50 @@ const inviteBodySchema = strictObject({
   }),
 });
 
-const inviteRoute = factory
-  .createApp()
-  .post("/", vValidator("json", inviteBodySchema), async (c) => {
-    await sendInvitation(c.req.valid("json"), c.var);
+const inviteRoute = buildHono().post(
+  "/",
+  sValidator("json", inviteBodySchema),
+  async (c) => {
+    console.log(c.var.language);
+    await sendInvitation(
+      { ...c.req.valid("json"), locale: c.var.language },
+      buildConfiguration(c)
+    );
     return c.text("OK");
-  });
+  }
+);
 
-const api = factory.createApp().route("/invite", inviteRoute);
+const api = buildHono().route("/invite", inviteRoute);
 
-const app = factory
-  .createApp()
-  .use(cors())
-  .use(logger())
+const app = buildHono()
+  .use(
+    languageDetector({
+      caches: false,
+      convertDetectedLanguage: (lang) => lang.split("-")[0],
+      fallbackLanguage: "en",
+      order: ["header"], // TODO caches:false doesn't seem to work
+      supportedLanguages: ["en", "fr"],
+    })
+  )
+  .use("*", (c, next) => {
+    const { websiteUrl } = buildConfiguration(c);
+
+    return cors({
+      credentials: true,
+      origin: websiteUrl,
+    })(c, next);
+  })
+  .use("*", (c, next) => {
+    const { websiteUrl } = buildConfiguration(c);
+
+    return csrf({
+      origin: websiteUrl,
+    })(c, next);
+  })
+  // useful when debugging
+  // // .use(logger())
   // Required to prevent a crash in development mode
-  .get("*", async (c) => {
+  .get("*", (c) => {
     return c.env.ASSETS
       ? c.env.ASSETS.fetch(c.req.raw)
       : new Response("Not Found", { status: 404 });
