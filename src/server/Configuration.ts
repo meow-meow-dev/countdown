@@ -32,5 +32,7 @@ export function buildConfiguration(c: Context): Configuration {
     ])
   );
 
+  console.log({ configuration });
+
   return v.parse(configurationSchema, configuration);
 }
