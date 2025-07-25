@@ -32,14 +32,22 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@main
         with:
-          node-version: 20
+          node-version: 21
           cache: pnpm
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run lint
-        run: pnpm lint
+      - name: Run TypeScript type checks
+        run: pnpm tsc:check
 
-      - name: run type checks
-        run: pnpm tscheck
+      - name: Run unit tests
+        run: pnpm unit_tests
+        env:
+          COUNTDOWN_DEVELOPMENT_SAMPLE_VAR: "xxx"
+
+      - name: Run lint
+        run: pnpm lint:check
+
+      - name: Run prettier
+        run: pnpm prettier:check

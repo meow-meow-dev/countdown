@@ -1,0 +1,25 @@
+{
+  "name": "countdown",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  },
+  "compatibility_flags" : [ "nodejs_compat" ],
+  "compatibility_date" : "2024-09-23",
+  "vars": {
+    "AWS_ACCESS_KEY_ID": "AKIAXBQQIEN5OBW3HLF5",
+    "AWS_REGION": "eu-west-3",
+    "SEND_INVITATION_FROM" :"countdown@meow-meow.dev",
+    "SITE_NAME": "Countdown"
+  },
+  "env": {
+    "production": {
+      "vars": {
+        "AWS_ACCESS_KEY_ID": "AKIAXBQQIEN5OBW3HLF5",
+        "AWS_REGION": "eu-west-3",
+        "SEND_INVITATION_FROM":"countdown@meow-meow.dev",
+        "SITE_NAME": "Countdown"
+      }
+    }
+  }
+}

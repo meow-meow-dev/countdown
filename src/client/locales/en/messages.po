@@ -1,0 +1,129 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2025-07-24 12:49+0700\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/client/Countdown.tsx:88
+msgid "{value, plural, one {heure} other {heures}}"
+msgstr "{value, plural, one {hour} other {hours}}"
+
+#: src/client/Countdown.tsx:84
+msgid "{value, plural, one {jour} other {jours}}"
+msgstr "{value, plural, one {day} other {days}}"
+
+#: src/client/Countdown.tsx:92
+msgid "{value, plural, one {minute} other {minutes}}"
+msgstr "{value, plural, one {minute} other {minutes}}"
+
+#: src/client/Countdown.tsx:96
+msgid "{value, plural, one {seconde} other {secondes}}"
+msgstr "{value, plural, one {seconde} other {seconds}}"
+
+#: src/client/Countdown.tsx:106
+msgid "<0>{value}</0><1>{unitLabel}</1>"
+msgstr "<0>{value}</0><1>{unitLabel}</1>"
+
+#: src/client/InviteForm.tsx:73
+msgid "Adresse e-mail du destinataire :"
+msgstr "Recipient e-mail :"
+
+#: src/client/SettingsForm.tsx:31
+msgid "Anglais"
+msgstr "English"
+
+#: src/client/SettingsForm.tsx:54
+#: src/client/InviteForm.tsx:87
+#: src/client/Editor.tsx:76
+msgid "Annuler"
+msgstr "Cancel"
+
+#: src/client/SettingsForm.tsx:57
+msgid "Appliquer"
+msgstr "Apply"
+
+#: src/client/EditSettingsButton.tsx:21
+msgid "Configuration"
+msgstr "Settings"
+
+#: src/client/CopyUrlButton.tsx:28
+msgid "Copier l'URL"
+msgstr "Copy URL"
+
+#: src/client/Editor.tsx:80
+#: src/client/EditButton.tsx:57
+msgid "Créer"
+msgstr "Create"
+
+#: src/client/Editor.tsx:70
+msgid "Date :"
+msgstr "Date :"
+
+#: src/client/EditButton.tsx:57
+msgid "Éditer"
+msgstr "Edit"
+
+#: src/client/Editor.tsx:56
+msgid "Édition"
+msgstr "Edition"
+
+#: src/client/InviteForm.tsx:90
+msgid "Envoyer l'invitation"
+msgstr "Send invitation"
+
+#: src/client/SettingsForm.tsx:34
+msgid "Français"
+msgstr "French"
+
+#: src/client/CopyUrlButton.tsx:21
+msgid "L'adresse a été copiée dans le presse-papier"
+msgstr "Address copied to clipboard"
+
+#: src/client/Editor.tsx:63
+msgid "Label :"
+msgstr "Label :"
+
+#: src/client/SettingsForm.tsx:49
+msgid "Langue :"
+msgstr "Language :"
+
+#: src/client/SendInvitationButton.tsx:36
+msgid "Le compte à rebours a été envoyé"
+msgstr "Countdown sent"
+
+#: src/client/Editor.tsx:80
+msgid "Mettre à jour"
+msgstr "Update"
+
+#: src/client/InviteForm.tsx:67
+msgid "Nom du destinataire :"
+msgstr "Recipient name :"
+
+#: src/client/Editor.tsx:56
+msgid "Nouveau compte à rebours"
+msgstr "New countdown"
+
+#: src/client/Editor.tsx:64
+msgid "Par ex. 'Vacances d'été'"
+msgstr "e.g. 'Summer holidays'"
+
+#: src/client/SendInvitationButton.tsx:67
+msgid "Partager par email"
+msgstr "Share via e-mail"
+
+#: src/client/InviteForm.tsx:81
+msgid "Une erreur est survenue"
+msgstr "An unexpected error occured"
+
+#: src/client/InviteForm.tsx:61
+msgid "Votre nom :"
+msgstr "Your name :"

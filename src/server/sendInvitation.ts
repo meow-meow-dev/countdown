@@ -1,61 +1,81 @@
-import type { Env } from "./Env";
-import { sendEmail } from "./sendEmail";
+import { i18n } from "@lingui/core";
 
-type TemplateParams = SendEmailProps & {
-  website: { name: string; url: string };
-};
-function generateBody({
-  countdown,
-  from,
-  to,
-  website,
-}: TemplateParams): string {
-  return `<html>
-            <body>
-              <p>Bonjour ${to.name},</p>
-              <p>${from.name} a partagé avec vous le compte à rebours <a href="${countdown.url}">${countdown.label}</a></p>
-              <p style="color: #acaba9">Envoyé depuis <a href="${website.url}">${website.name}</a></p>
-            </body>
-          </html>`;
-}
+import type { Configuration } from "./Configuration.js";
 
-function generateSubject({ countdown }: TemplateParams): string {
-  return `Compte à rebours: ${countdown.label}`;
-}
+import { sendEmail } from "./sendEmail.js";
 
 type SendEmailProps = {
   countdown: { label: string; url: string };
   from: {
     name: string;
   };
+  locale: string;
   to: {
     email: string;
     name: string;
   };
 };
 
+type TemplateParams = SendEmailProps & {
+  website: { name: string; url: string };
+};
+
 export async function sendInvitation(
   params: SendEmailProps,
-  env: Env,
+  configuration: Configuration
 ): Promise<void> {
-  const { SEND_INVITATION_FROM, WEBSITE_NAME, WEBSITE_URL } = env;
-  if (
-    SEND_INVITATION_FROM === undefined ||
-    WEBSITE_NAME === undefined ||
-    WEBSITE_URL === undefined
-  ) {
-    return;
-  }
-
   const templateParams = {
     ...params,
-    website: { name: WEBSITE_NAME, url: WEBSITE_URL },
+    website: { name: configuration.websiteName, url: configuration.websiteUrl },
   };
-  const body = generateBody(templateParams);
-  const subject = generateSubject(templateParams);
+  const { body, subject } = await generateEmail(templateParams);
 
   await sendEmail(
-    { body, from: SEND_INVITATION_FROM, subject, to: params.to.email },
-    env,
+    {
+      body,
+      from: configuration.sendInvitationFrom,
+      subject,
+      to: params.to.email,
+    },
+    configuration
   );
+}
+
+async function generateEmail({
+  countdown,
+  from,
+  locale,
+  to,
+  website,
+}: TemplateParams): Promise<{ body: string; subject: string }> {
+  i18n.activate(locale);
+
+  const { name: toName } = to;
+  const { name: fromName } = from;
+  const { name: websiteName, url: websiteUrl } = website;
+  const { label: countdownLabel, url: countdownUrl } = countdown;
+
+  const body = `
+    <html>
+      <body>
+      <p>
+        ${i18n._("Bonjour {toName},", { toName })}
+      </p>
+      <p>
+        ${i18n._(
+          '{fromName} a partagé avec vous le compte à rebours <a href="{countdownUrl}">{countdownLabel}</a>',
+          { countdownLabel, countdownUrl, fromName }
+        )}
+      </p>
+      <p style="color: #acaba9">
+        ${i18n._('Envoyé depuis <a href="{websiteUrl}">{websiteName}</a>', { websiteName, websiteUrl })}
+      </p>
+      </body>
+    </html>`;
+
+  const subject = i18n._("Compte à rebours : {countdownLabel}", {
+    countdownLabel,
+  });
+
+  return { body, subject };
 }

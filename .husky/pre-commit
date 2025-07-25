@@ -1,1 +1,1 @@
-pnpm prettier && pnpm lint && pnpm tscheck
+pnpm lint-staged --concurrent false && pnpm qa

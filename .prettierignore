@@ -1,2 +1,8 @@
 pnpm-lock.yaml
+.vite
+.turbo
+src/client/locales/*/messages.ts
+src/server/locales/*/messages.ts
 
+# Ignoring as it adds trailing commas
+wrangler.jsonc
