@@ -64,7 +64,7 @@ export function Countdown({
         </div>
       </div>
 
-      {totalSeconds <= 60 * 185 ? (
+      {totalSeconds <= 0 ? (
         <Confetti />
       ) : (
         <Flex
