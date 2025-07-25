@@ -47,7 +47,7 @@ jobs:
       - name: Run unit tests
         run: pnpm unit_tests
         env:
-          COUNTDOWN_DEVELOPMENT_SAMPLE_VAR: "xxx"
+          UCOLORRKIT_DEVELOPMENT_AWS_SECRET_ACCESS_KEY: "xxx"
 
       - name: Run lint
         run: pnpm lint:check
