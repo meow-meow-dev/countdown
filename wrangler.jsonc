@@ -21,6 +21,14 @@
         "SEND_INVITATION_FROM":"countdown@meow-meow.dev",
         "SITE_NAME": "Countdown"
       }
+    },
+    "staging": {
+      "vars": {
+        "AWS_ACCESS_KEY_ID": "AKIAXBQQIEN5OBW3HLF5",
+        "AWS_REGION": "eu-west-3",
+        "SEND_INVITATION_FROM":"countdown@meow-meow.dev",
+        "SITE_NAME": "Countdown"
+      }
     }
   }
 }
