@@ -33,6 +33,7 @@ export function EditButton({ mode, urlParams }: EditButtonProps): JSX.Element {
     };
 
     modals.open({
+      centered: true,
       children: (
         <Editor
           className="max-w-full"
@@ -43,6 +44,7 @@ export function EditButton({ mode, urlParams }: EditButtonProps): JSX.Element {
           onSubmit={handleSubmit}
         />
       ),
+      classNames: { content: "w-[95%] md:w-120" },
       modalId,
       size: "auto",
       withCloseButton: false,

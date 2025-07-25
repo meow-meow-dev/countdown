@@ -8,19 +8,7 @@ import { useState } from "react";
 import { FiAlertTriangle } from "react-icons/fi";
 import { email, minLength, pipe, strictObject, string } from "valibot";
 
-// TODO i18n
-
-const schema = strictObject({
-  from: strictObject({
-    name: pipe(string(), minLength(1, "Le nom doit être rempli")),
-  }),
-  to: strictObject({
-    email: pipe(string(), email("Cette adresse e-mail ne semble pas valide")),
-    name: pipe(string(), minLength(1, "Le nom doit être rempli")),
-  }),
-});
-
-export type FormData = InferOutput<typeof schema>;
+export type FormData = InferOutput<ReturnType<typeof useSchema>>;
 
 type InviteFormProps = {
   onCancel: () => void;
@@ -32,6 +20,7 @@ export function InviteForm({
   onSubmit,
 }: InviteFormProps): React.JSX.Element {
   const { t } = useLingui();
+  const schema = useSchema();
   const form = useForm({
     initialValues: { from: { name: "" }, to: { email: "", name: "" } },
     mode: "uncontrolled",
@@ -94,4 +83,22 @@ export function InviteForm({
       </Group>
     </form>
   );
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+function useSchema() {
+  const { t } = useLingui();
+
+  return strictObject({
+    from: strictObject({
+      name: pipe(string(), minLength(1, t`Le nom doit être rempli`)),
+    }),
+    to: strictObject({
+      email: pipe(
+        string(),
+        email(t`Cette adresse e-mail ne semble pas valide`)
+      ),
+      name: pipe(string(), minLength(1, t`Le nom doit être rempli`)),
+    }),
+  });
 }

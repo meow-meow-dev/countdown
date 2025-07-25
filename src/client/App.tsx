@@ -24,6 +24,7 @@ export function App(): JSX.Element {
           />
         ) : (
           <Editor
+            className="border border-blue-600 p-5"
             defaultValues={urlParamsToEditorFormData(urlParams)}
             onSubmit={handleSubmit}
           />

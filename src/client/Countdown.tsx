@@ -6,6 +6,7 @@ import { Trans } from "@lingui/react/macro";
 import { Flex, Group, Text, Title } from "@mantine/core";
 import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
+import Confetti from "react-confetti";
 import { FiCalendar } from "react-icons/fi";
 import { twMerge } from "tailwind-merge";
 
@@ -33,11 +34,13 @@ export function Countdown({
   }, [setNow]);
 
   const delta = to.diff(now);
+  const totalSeconds = Math.floor(delta.as("seconds"));
   const days = Math.floor(delta.as("days"));
   const hours = Math.floor(delta.as("hours")) % 24;
   const minutes = Math.floor(delta.as("minutes")) % 60;
-  const seconds = Math.floor(delta.as("seconds")) % 60;
+  const seconds = totalSeconds % 60;
 
+  console.log({ seconds });
   return (
     <div
       className={twMerge(
@@ -61,20 +64,24 @@ export function Countdown({
         </div>
       </div>
 
-      <Flex
-        align="center"
-        className="gap-3 text-5xl"
-        direction={{ base: "column", sm: "row" }}
-      >
-        {days === 0 ? undefined : <DurationUnit unit="day" value={days} />}
-        {days === 0 && hours === 0 ? undefined : (
-          <DurationUnit unit="hour" value={hours} />
-        )}
-        {days === 0 && hours === 0 && minutes === 0 ? undefined : (
-          <DurationUnit unit="minute" value={minutes} />
-        )}
-        <DurationUnit unit="second" value={seconds} />
-      </Flex>
+      {totalSeconds <= 60 * 185 ? (
+        <Confetti />
+      ) : (
+        <Flex
+          align="center"
+          className="gap-3 text-5xl"
+          direction={{ base: "column", sm: "row" }}
+        >
+          {days === 0 ? undefined : <DurationUnit unit="day" value={days} />}
+          {days === 0 && hours === 0 ? undefined : (
+            <DurationUnit unit="hour" value={hours} />
+          )}
+          {days === 0 && hours === 0 && minutes === 0 ? undefined : (
+            <DurationUnit unit="minute" value={minutes} />
+          )}
+          <DurationUnit unit="second" value={seconds} />
+        </Flex>
+      )}
     </div>
   );
 }
@@ -99,7 +106,6 @@ function DurationUnit({ unit, value }: DurationUnitProps): JSX.Element {
     }),
   };
   const unitLabel = unitLabels[unit];
-  console.log({ unitLabels });
 
   return (
     <Group className="gap-3">

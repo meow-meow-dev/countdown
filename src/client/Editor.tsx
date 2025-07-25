@@ -10,12 +10,7 @@ import { standardResolver } from "mantine-form-standard-resolver";
 import { twMerge } from "tailwind-merge";
 import { isoDate, minLength, pipe, strictObject, string } from "valibot";
 
-const schema = strictObject({
-  label: pipe(string(), minLength(1, "Le label doit être rempli")),
-  to: pipe(string(), isoDate()),
-});
-
-export type EditorFormData = InferOutput<typeof schema>;
+export type EditorFormData = InferOutput<ReturnType<typeof useSchema>>;
 
 type EditorProps = {
   className?: string;
@@ -33,6 +28,7 @@ export function Editor({
   const minDate = DateTime.now().plus({ days: 1 });
 
   const { t } = useLingui();
+  const schema = useSchema();
 
   const form = useForm({
     initialValues: defaultValues ?? {
@@ -46,10 +42,7 @@ export function Editor({
 
   return (
     <form
-      className={twMerge(
-        "round m-auto flex w-120 flex-col gap-10 border border-blue-600 p-5",
-        className
-      )}
+      className={twMerge("round m-auto flex w-120 flex-col gap-10", className)}
       onSubmit={form.onSubmit(handleSubmit)}
     >
       <Title className="text-center text-blue-800" order={2}>
@@ -82,4 +75,14 @@ export function Editor({
       </Group>
     </form>
   );
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+function useSchema() {
+  const { t } = useLingui();
+
+  return strictObject({
+    label: pipe(string(), minLength(1, t`Le label doit être rempli`)),
+    to: pipe(string(), isoDate()),
+  });
 }

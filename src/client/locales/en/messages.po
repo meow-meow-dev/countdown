@@ -33,7 +33,7 @@ msgstr "{value, plural, one {seconde} other {seconds}}"
 msgid "<0>{value}</0><1>{unitLabel}</1>"
 msgstr "<0>{value}</0><1>{unitLabel}</1>"
 
-#: src/client/InviteForm.tsx:73
+#: src/client/InviteForm.tsx:62
 msgid "Adresse e-mail du destinataire :"
 msgstr "Recipient e-mail :"
 
@@ -42,14 +42,18 @@ msgid "Anglais"
 msgstr "English"
 
 #: src/client/SettingsForm.tsx:54
-#: src/client/InviteForm.tsx:87
-#: src/client/Editor.tsx:76
+#: src/client/InviteForm.tsx:76
+#: src/client/Editor.tsx:69
 msgid "Annuler"
 msgstr "Cancel"
 
 #: src/client/SettingsForm.tsx:57
 msgid "Appliquer"
 msgstr "Apply"
+
+#: src/client/InviteForm.tsx:99
+msgid "Cette adresse e-mail ne semble pas valide"
+msgstr "This e-mail is invalid"
 
 #: src/client/EditSettingsButton.tsx:21
 msgid "Configuration"
@@ -59,24 +63,24 @@ msgstr "Settings"
 msgid "Copier l'URL"
 msgstr "Copy URL"
 
-#: src/client/Editor.tsx:80
-#: src/client/EditButton.tsx:57
+#: src/client/Editor.tsx:73
+#: src/client/EditButton.tsx:59
 msgid "Créer"
 msgstr "Create"
 
-#: src/client/Editor.tsx:70
+#: src/client/Editor.tsx:63
 msgid "Date :"
 msgstr "Date :"
 
-#: src/client/EditButton.tsx:57
+#: src/client/EditButton.tsx:59
 msgid "Éditer"
 msgstr "Edit"
 
-#: src/client/Editor.tsx:56
+#: src/client/Editor.tsx:49
 msgid "Édition"
 msgstr "Edition"
 
-#: src/client/InviteForm.tsx:90
+#: src/client/InviteForm.tsx:82
 msgid "Envoyer l'invitation"
 msgstr "Send invitation"
 
@@ -88,7 +92,7 @@ msgstr "French"
 msgid "L'adresse a été copiée dans le presse-papier"
 msgstr "Address copied to clipboard"
 
-#: src/client/Editor.tsx:63
+#: src/client/Editor.tsx:56
 msgid "Label :"
 msgstr "Label :"
 
@@ -96,34 +100,43 @@ msgstr "Label :"
 msgid "Langue :"
 msgstr "Language :"
 
-#: src/client/SendInvitationButton.tsx:36
+#: src/client/SendInvitationButton.tsx:38
 msgid "Le compte à rebours a été envoyé"
 msgstr "Countdown sent"
 
-#: src/client/Editor.tsx:80
+#: src/client/Editor.tsx:85
+msgid "Le label doit être rempli"
+msgstr "Label is required"
+
+#: src/client/InviteForm.tsx:94
+#: src/client/InviteForm.tsx:101
+msgid "Le nom doit être rempli"
+msgstr "Name is required"
+
+#: src/client/Editor.tsx:73
 msgid "Mettre à jour"
 msgstr "Update"
 
-#: src/client/InviteForm.tsx:67
+#: src/client/InviteForm.tsx:56
 msgid "Nom du destinataire :"
 msgstr "Recipient name :"
 
-#: src/client/Editor.tsx:56
+#: src/client/Editor.tsx:49
 msgid "Nouveau compte à rebours"
 msgstr "New countdown"
 
-#: src/client/Editor.tsx:64
+#: src/client/Editor.tsx:57
 msgid "Par ex. 'Vacances d'été'"
 msgstr "e.g. 'Summer holidays'"
 
-#: src/client/SendInvitationButton.tsx:67
+#: src/client/SendInvitationButton.tsx:69
 msgid "Partager par email"
 msgstr "Share via e-mail"
 
-#: src/client/InviteForm.tsx:81
+#: src/client/InviteForm.tsx:70
 msgid "Une erreur est survenue"
 msgstr "An unexpected error occured"
 
-#: src/client/InviteForm.tsx:61
+#: src/client/InviteForm.tsx:50
 msgid "Votre nom :"
 msgstr "Your name :"
