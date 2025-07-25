@@ -38,6 +38,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Generate code
+        run: pnpm generate_code
+
       - name: Run TypeScript type checks
         run: pnpm tsc:check
 
