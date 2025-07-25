@@ -38,7 +38,7 @@ export async function sendInvitation(
       to: params.to.email,
     },
     configuration
-  );
+  ).catch((error) => console.error(JSON.stringify(error, null, 2)));
 }
 
 async function generateEmail({
