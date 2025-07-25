@@ -40,7 +40,6 @@ export function Countdown({
   const minutes = Math.floor(delta.as("minutes")) % 60;
   const seconds = totalSeconds % 60;
 
-  console.log({ seconds });
   return (
     <div
       className={twMerge(
