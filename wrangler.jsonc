@@ -1,21 +1,29 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "countdown",
-    "pages_build_output_dir": "./dist",
-    "compatibility_flags": ["nodejs_compat"],
-    "compatibility_date": "2024-09-23",
+  "pages_build_output_dir": "./dist",
+  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_date": "2025-05-05",
   "vars": {
     "AWS_ACCESS_KEY_ID": "AKIAXBQQIEN5OBW3HLF5",
     "AWS_REGION": "eu-west-3",
-    "SEND_INVITATION_FROM" :"countdown@meow-meow.dev",
+    "SEND_INVITATION_FROM" :"Countdown <countdown@meow-meow.dev>",
     "SITE_NAME": "Countdown"
   },
   "env": {
+    "preview": {
+      "vars": {
+        "AWS_ACCESS_KEY_ID": "AKIAXBQQIEN5OBW3HLF5",
+        "AWS_REGION": "eu-west-3",
+        "SEND_INVITATION_FROM":"Countdown <countdown@meow-meow.dev>",
+        "SITE_NAME": "Countdown"
+      }
+    },
     "production": {
       "vars": {
         "AWS_ACCESS_KEY_ID": "AKIAXBQQIEN5OBW3HLF5",
         "AWS_REGION": "eu-west-3",
-        "SEND_INVITATION_FROM":"countdown@meow-meow.dev",
+        "SEND_INVITATION_FROM":"Countdown <countdown@meow-meow.dev>",
         "SITE_NAME": "Countdown"
       }
     }
