@@ -7,7 +7,15 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["dist", "src/server/_generated", "src/client/locales", ".vite"] },
+  {
+    ignores: [
+      "dist",
+      "src/server/_generated",
+      "src/client/locales",
+      ".vite",
+      "src/sever/locales",
+    ],
+  },
   {
     extends: [
       js.configs.recommended,

@@ -7,7 +7,7 @@
   "vars": {
     "AWS_ACCESS_KEY_ID": "AKIAXBQQIEN5OBW3HLF5",
     "AWS_REGION": "eu-west-3",
-    "SEND_INVITATION_FROM" :"countdown@meow-meow.dev",
+    "SEND_INVITATION_FROM" :"Countdown <countdown@meow-meow.dev>",
     "SITE_NAME": "Countdown"
   },
   "env": {
@@ -15,7 +15,7 @@
       "vars": {
         "AWS_ACCESS_KEY_ID": "AKIAXBQQIEN5OBW3HLF5",
         "AWS_REGION": "eu-west-3",
-        "SEND_INVITATION_FROM":"countdown@meow-meow.dev",
+        "SEND_INVITATION_FROM":"Countdown <countdown@meow-meow.dev>",
         "SITE_NAME": "Countdown"
       }
     },
@@ -23,7 +23,7 @@
       "vars": {
         "AWS_ACCESS_KEY_ID": "AKIAXBQQIEN5OBW3HLF5",
         "AWS_REGION": "eu-west-3",
-        "SEND_INVITATION_FROM":"countdown@meow-meow.dev",
+        "SEND_INVITATION_FROM":"Countdown <countdown@meow-meow.dev>",
         "SITE_NAME": "Countdown"
       }
     }
