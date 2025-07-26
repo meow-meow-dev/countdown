@@ -9,6 +9,7 @@
     "#server": "./src/server/index.ts"
   },
   "scripts": {
+    "build": "pnpm generate_code && pnpm vite build --config vite.config.client.ts && pnpm vite build --config vite.config.server.ts",
     "dev": "pnpm concurrently \"vite --config vite.config.server.ts\" \"vite --config vite.config.client.ts\"",
     "generate_code": "pnpm wrangler:generate_types && pnpm lingui:extract && pnpm lingui:compile",
     "preview": "wrangler pages dev",
@@ -22,7 +23,6 @@
     "qa": "pnpm tsc:check && pnpm lint:check && pnpm prettier:check",
     "tsc:check": "pnpm tsc -noEmit --project tsconfig.app.json",
     "unit_tests": "pnpm vitest:client:run && pnpm vitest:server:run",
-    "vite:build": "pnpm vite build --config vite.config.client.ts && pnpm vite build --config vite.config.server.ts",
     "vitest:client:run": "pnpm vitest run --config=vite.config.client.ts --mode development --passWithNoTests",
     "vitest:client:watch": "pnpm vitest watch --config=vite.config.client.ts --mode development --passWithNoTests",
     "vitest:server:run": "pnpm vitest run --config=vitest.config.server.ts --mode development --passWithNoTests",

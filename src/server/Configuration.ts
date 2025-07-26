@@ -10,7 +10,7 @@ const configurationSchema = v.strictObject({
   awsSecretAccessKey: nonEmptyStringSchema,
   sendInvitationFrom: nonEmptyStringSchema,
   websiteName: nonEmptyStringSchema,
-  websiteUrl: nonEmptyStringSchema,
+  websiteUrl: v.union([nonEmptyStringSchema, v.undefined()]),
 });
 
 export type Configuration = v.InferOutput<typeof configurationSchema>;

@@ -31,15 +31,37 @@ const inviteRoute = buildHono().post(
   "/",
   sValidator("json", inviteBodySchema),
   async (c) => {
+    const configuration = buildConfiguration(c);
+    const websiteUrl = configuration.websiteUrl ?? new URL(c.req.url).origin;
+
     await sendInvitation(
       { ...c.req.valid("json"), locale: c.var.language },
-      buildConfiguration(c)
+      configuration,
+      websiteUrl
     );
     return c.text("OK");
   }
 );
 
-const api = buildHono().route("/invite", inviteRoute);
+const developmentUrl = ["http://localhost:5173", "http://localhost:8788"];
+
+const api = buildHono()
+  .use("*", (c, next) => {
+    const { websiteUrl } = buildConfiguration(c);
+
+    return cors({
+      credentials: true,
+      origin: websiteUrl ?? developmentUrl,
+    })(c, next);
+  })
+  .use("*", (c, next) => {
+    const { websiteUrl } = buildConfiguration(c);
+
+    return csrf({
+      origin: websiteUrl ?? developmentUrl,
+    })(c, next);
+  })
+  .route("/invite", inviteRoute);
 
 const app = buildHono()
   .use(
@@ -51,21 +73,6 @@ const app = buildHono()
       supportedLanguages: ["en", "fr"],
     })
   )
-  .use("*", (c, next) => {
-    const { websiteUrl } = buildConfiguration(c);
-
-    return cors({
-      credentials: true,
-      origin: websiteUrl,
-    })(c, next);
-  })
-  .use("*", (c, next) => {
-    const { websiteUrl } = buildConfiguration(c);
-
-    return csrf({
-      origin: websiteUrl,
-    })(c, next);
-  })
   // useful when debugging
   // // .use(logger())
   // Required to prevent a crash in development mode

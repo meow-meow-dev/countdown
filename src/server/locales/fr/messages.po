@@ -14,22 +14,22 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/server/sendInvitation.ts:62
+#: src/server/sendInvitation.ts:64
 msgid "Bonjour {toName},"
 msgstr "Bonjour {toName},"
 
 #. js-lingui-explicit-id
-#: src/server/sendInvitation.ts:65
+#: src/server/sendInvitation.ts:67
 msgid "{fromName} a partagé avec vous le compte à rebours <a href=\"{countdownUrl}\">{countdownLabel}</a>"
 msgstr "{fromName} a partagé avec vous le compte à rebours <a href=\"{countdownUrl}\">{countdownLabel}</a>"
 
 #. js-lingui-explicit-id
-#: src/server/sendInvitation.ts:71
+#: src/server/sendInvitation.ts:73
 msgid "Envoyé depuis <a href=\"{websiteUrl}\">{websiteName}</a>"
 msgstr "Envoyé depuis <a href=\"{websiteUrl}\">{websiteName}</a>"
 
 #. js-lingui-explicit-id
-#: src/server/sendInvitation.ts:76
+#: src/server/sendInvitation.ts:78
 msgid "Compte à rebours : {countdownLabel}"
 msgstr "Compte à rebours : {countdownLabel}"
 

@@ -22,11 +22,12 @@ type TemplateParams = SendEmailProps & {
 
 export async function sendInvitation(
   params: SendEmailProps,
-  configuration: Configuration
+  configuration: Configuration,
+  websiteUrl: string
 ): Promise<void> {
   const templateParams = {
     ...params,
-    website: { name: configuration.websiteName, url: configuration.websiteUrl },
+    website: { name: configuration.websiteName, url: websiteUrl },
   };
   const { body, subject } = await generateEmail(templateParams);
 

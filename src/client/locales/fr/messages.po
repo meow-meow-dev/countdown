@@ -13,19 +13,19 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/client/Countdown.tsx:95
+#: src/client/Countdown.tsx:94
 msgid "{value, plural, one {heure} other {heures}}"
 msgstr "{value, plural, one {heure} other {heures}}"
 
-#: src/client/Countdown.tsx:91
+#: src/client/Countdown.tsx:90
 msgid "{value, plural, one {jour} other {jours}}"
 msgstr "{value, plural, one {jour} other {jours}}"
 
-#: src/client/Countdown.tsx:99
+#: src/client/Countdown.tsx:98
 msgid "{value, plural, one {minute} other {minutes}}"
 msgstr "{value, plural, one {minute} other {minutes}}"
 
-#: src/client/Countdown.tsx:103
+#: src/client/Countdown.tsx:102
 msgid "{value, plural, one {seconde} other {secondes}}"
 msgstr "{value, plural, one {seconde} other {secondes}}"
 
@@ -37,7 +37,7 @@ msgstr "{value, plural, one {seconde} other {secondes}}"
 #~ msgid "<0>{0}</0><1>{value, plural, }</1>"
 #~ msgstr "<0>{0}</0><1>{value, plural, }</1>"
 
-#: src/client/Countdown.tsx:112
+#: src/client/Countdown.tsx:111
 msgid "<0>{value}</0><1>{unitLabel}</1>"
 msgstr "<0>{value}</0><1>{unitLabel}</1>"
 
