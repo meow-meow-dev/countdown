@@ -31,7 +31,6 @@ const inviteRoute = buildHono().post(
   "/",
   sValidator("json", inviteBodySchema),
   async (c) => {
-    console.log(c.var.language);
     await sendInvitation(
       { ...c.req.valid("json"), locale: c.var.language },
       buildConfiguration(c)

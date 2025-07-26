@@ -1,12 +1,9 @@
 {
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "countdown",
-  "assets": {
-    "directory": "./dist",
-    "not_found_handling": "single-page-application"
-  },
-  "main": "./dist/index.js",
-  "compatibility_flags" : [ "nodejs_compat" ],
-  "compatibility_date" : "2024-09-23",
+    "pages_build_output_dir": "./dist",
+    "compatibility_flags": ["nodejs_compat"],
+    "compatibility_date": "2024-09-23",
   "vars": {
     "AWS_ACCESS_KEY_ID": "AKIAXBQQIEN5OBW3HLF5",
     "AWS_REGION": "eu-west-3",
