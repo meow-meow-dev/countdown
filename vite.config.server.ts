@@ -1,6 +1,6 @@
 import type { Plugin, UserConfig } from "vite";
 
-import build from "@hono/vite-build/cloudflare-workers";
+import build from "@hono/vite-build/cloudflare-pages";
 import devServer from "@hono/vite-dev-server";
 import cloudflareAdapter from "@hono/vite-dev-server/cloudflare";
 import { lingui } from "@lingui/vite-plugin";
