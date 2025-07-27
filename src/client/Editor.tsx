@@ -59,6 +59,7 @@ export function Editor({
       />
 
       <DatePickerInput
+        {...form.getInputProps("to")}
         defaultValue={form.values.to}
         label={t`Date :`}
         minDate={minDate.toJSDate()}
