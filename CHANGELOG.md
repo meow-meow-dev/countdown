@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/meow-meow-dev/countdown/compare/v1.0.0...v1.0.1) (2025-07-27)
+
+
+### Bug Fixes
+
+* fix date bug ([6dd53dc](https://github.com/meow-meow-dev/countdown/commit/6dd53dcf1be96e4d977e2f4cc74bb7f17b914a77))
+
 ## 1.0.0 (2025-07-26)
 
 
